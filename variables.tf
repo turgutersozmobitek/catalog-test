@@ -3,7 +3,7 @@ variable "boot_image" {
     type        = string
     description = "Boot_Image"
 }
-variable "catalog" {
+variable "catalogs" {
     type        = string
     description = "Catalog"
 }
