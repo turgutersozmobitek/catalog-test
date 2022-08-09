@@ -73,7 +73,7 @@ variable "catalog_name" {
 
 variable "catalogs" {
     type        = string
-    description = "Catalog"
+    description = "Catalog2"
 }
 
 variable "boot_image" {
