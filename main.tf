@@ -10,17 +10,21 @@ resource "vcd_vapp_org_network" "vappOrgNet" {
 }
 
 resource "vcd_vapp_vm" "web1" {
-  vapp_name     = var.vapp_name
-  name          = var.vm_name
-  catalog_name  = var.catalog_name
-  template_name = var.template_name
-  memory        = var.vm_memory
-  cpus          = var.vm_cpu
-  cpu_cores     = var.vm_cpu_core
+  vapp_name          = var.vapp_name
+  name               = var.vm_name
+  os_type            = var.os_type
+  hardware_version   = "vmx-14"
+  catalog_name       = var.catalog_name
+  boot_image         = var.boot_image
+  memory             = var.vm_memory
+  cpus               = var.vm_cpu
+  cpu_cores          = var.vm_cpu_core
   cpu_hot_add_enabled=true
   memory_hot_add_enabled=true
   power_on=true
 
+
+   
     override_template_disk {
     bus_type        = "paravirtual"
     size_in_mb      = var.vm_disk_size
@@ -30,11 +34,6 @@ resource "vcd_vapp_vm" "web1" {
   }
 
 
-
-  guest_properties = {
-    "guest.hostname"   = "my-host"
-    "another.var.name" = "var-value"
-  }
 
   network {
     type               = "org"
